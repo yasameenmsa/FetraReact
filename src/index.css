@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Tajawal:wght@300;400;500;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth text-gray-800 bg-cream-100;
+  }
+  
+  body {
+    @apply font-sans antialiased overflow-x-hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-cairo font-bold text-brown-800;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply container mx-auto px-4 md:px-6 lg:px-8;
+  }
+  
+  .btn-primary {
+    @apply bg-green-700 text-white px-8 py-3 rounded-full hover:bg-green-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl font-bold text-lg inline-flex items-center justify-center gap-2;
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent border-2 border-brown-700 text-brown-800 px-8 py-3 rounded-full hover:bg-brown-700 hover:text-white transition-all duration-300 transform hover:scale-105 font-bold text-lg inline-flex items-center justify-center gap-2;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(90, 125, 76, 0.3);
+  }
+
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-cream-200;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-brown-400 rounded-full hover:bg-brown-600 transition-colors;
+}
