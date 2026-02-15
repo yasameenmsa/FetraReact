@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Home, Brain, Sparkles } from 'lucide-react';
 
 const Education = () => {

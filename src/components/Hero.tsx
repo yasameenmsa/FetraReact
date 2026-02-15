@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { ArrowDown, leaf } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { ArrowDown } from 'lucide-react';
 
 const Hero = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -36,10 +36,17 @@ const Hero = () => {
                     </p>
                     
                     <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
-                        <button className="btn-primary text-xl px-10 py-4 shadow-green-900/50">
+                        <button
+                            className="btn-primary text-xl px-10 py-4 shadow-green-900/50"
+                            onClick={() => document.getElementById('summary')?.scrollIntoView({ behavior: 'smooth' })}
+                            aria-label="انتقل إلى قسم عن المشروع"
+                        >
                             اكتشف المزيد
                         </button>
-                        <button className="px-10 py-4 rounded-full border-2 border-cream-100/30 text-cream-100 hover:bg-cream-100 hover:text-brown-900 transition-all duration-300 font-bold text-lg">
+                        <button
+                            className="px-10 py-4 rounded-full border-2 border-cream-100/30 text-cream-100 hover:bg-cream-100 hover:text-brown-900 transition-all duration-300 font-bold text-lg"
+                            aria-label="شاهد الفيديو التعريفي للمشروع"
+                        >
                             شاهد الفيديو
                         </button>
                     </div>

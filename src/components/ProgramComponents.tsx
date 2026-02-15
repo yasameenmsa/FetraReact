@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Users, Tent, BookOpen, MessageCircle, Heart, Link as LinkIcon } from 'lucide-react';
 
 const ProgramComponents = () => {

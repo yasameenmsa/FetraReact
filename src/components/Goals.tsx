@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { BarChart3, Shield, Scale, Globe } from 'lucide-react';
 
 const Goals = () => {

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { CheckCircle2, ShieldCheck } from 'lucide-react';
 
 const Ambassadors = () => {
@@ -35,7 +35,13 @@ const Ambassadors = () => {
                     ))}
                     
                     {/* Placeholder for visual balance if odd number */}
-                    <a href="https://www.linkedin.com/in/yasmin-msa/" target="_blank" className="hidden md:flex items-center justify-center p-6 rounded-2xl bg-green-600 text-white shadow-lg animate-on-scroll delay-500 hover:bg-green-700 transition-colors cursor-pointer">
+                    <a
+                        href="https://www.linkedin.com/in/yasmin-msa/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hidden md:flex items-center justify-center p-6 rounded-2xl bg-green-600 text-white shadow-lg animate-on-scroll delay-500 hover:bg-green-700 transition-colors cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
+                        aria-label="سجل الآن كسفير في مشروع فطرة (يفتح في نافذة جديدة)"
+                    >
                         <span className="text-xl font-bold">سجل الآن كسفير</span>
                     </a>
                 </div>

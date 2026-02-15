@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Mail, Facebook, Twitter, Instagram, ArrowLeft } from 'lucide-react';
 
 const Contact = () => {
@@ -15,7 +15,11 @@ const Contact = () => {
                     </p>
                     
                     <div className="flex flex-col md:flex-row gap-6 justify-center mb-12">
-                        <button className="btn-primary bg-cream-100 text-brown-900 hover:bg-white hover:text-green-800 text-xl px-12">
+                        <button
+                            className="btn-primary bg-cream-100 text-brown-900 hover:bg-white hover:text-green-800 text-xl px-12"
+                            onClick={() => alert('سيتم إضافة نموذج التسجيل قريباً')}
+                            aria-label="افتح نموذج التسجيل"
+                        >
                             سجل الآن
                             <ArrowLeft className="mr-2" />
                         </button>

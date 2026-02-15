@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Leaf, Bird } from 'lucide-react';
 
 const FitrahDefinition = () => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
 const Header = () => {
@@ -52,15 +52,21 @@ const Header = () => {
                             <span className="absolute -bottom-1 right-0 w-0 h-0.5 bg-green-700 transition-all duration-300 group-hover:w-full"></span>
                         </a>
                     ))}
-                    <button className={`btn-primary px-6 py-2 text-sm ${!scrolled && 'bg-cream-100 text-brown-800 hover:bg-white'}`}>
+                    <button
+                        className={`btn-primary px-6 py-2 text-sm ${!scrolled && 'bg-cream-100 text-brown-800 hover:bg-white'}`}
+                        aria-label="انضم إلى مشروع فطرة"
+                        onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                    >
                         انضم إلينا
                     </button>
                 </nav>
 
                 {/* Mobile Menu Button */}
-                <button 
+                <button
                     className="md:hidden p-2 text-brown-800"
                     onClick={() => setIsOpen(!isOpen)}
+                    aria-label={isOpen ? 'إغلاق القائمة' : 'فتح القائمة'}
+                    aria-expanded={isOpen}
                 >
                     {isOpen ? <X size={24} color={scrolled ? '#6B4423' : '#F5F1E8'} /> : <Menu size={24} color={scrolled ? '#6B4423' : '#F5F1E8'} />}
                 </button>
@@ -84,7 +90,16 @@ const Header = () => {
                             {link.name}
                         </a>
                     ))}
-                    <button className="btn-primary w-full mt-4">
+                    <button
+                        className="btn-primary w-full mt-4"
+                        aria-label="انضم إلى مشروع فطرة"
+                        onClick={() => {
+                            setIsOpen(false);
+                            setTimeout(() => {
+                                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                            }, 300);
+                        }}
+                    >
                         انضم إلينا
                     </button>
                 </div>
@@ -92,9 +107,10 @@ const Header = () => {
             
             {/* Overlay for mobile menu */}
             {isOpen && (
-                <div 
+                <div
                     className="fixed inset-0 bg-black/50 z-30 md:hidden"
                     onClick={() => setIsOpen(false)}
+                    aria-hidden="true"
                 />
             )}
         </header>

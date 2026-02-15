@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Compass, Target, User } from 'lucide-react';
 
 const AmbassadorIntro = () => {

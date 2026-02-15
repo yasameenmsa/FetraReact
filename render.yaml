@@ -1,0 +1,23 @@
+# Render Configuration for Static Site Deployment
+# https://render.com/docs/deploy-static-sites
+
+services:
+  - type: web
+    name: fitrah-project
+    env: static
+    buildCommand: npm run build
+    staticPublishPath: dist
+    pullRequestPreviewsEnabled: true
+    headers:
+      - source: /*
+        headers:
+          - key: X-Frame-Options
+            value: SAMEORIGIN
+          - key: X-Content-Type-Options
+            value: nosniff
+          - key: X-XSS-Protection
+            value: 1; mode=block
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

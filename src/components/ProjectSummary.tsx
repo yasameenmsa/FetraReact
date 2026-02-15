@@ -1,8 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { Lightbulb } from 'lucide-react';
 
 const ProjectSummary = () => {
-    const sectionRef = useRef(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -52,10 +51,18 @@ const ProjectSummary = () => {
                             </p>
                             
                             <div className="mt-10 flex flex-wrap justify-center gap-4">
-                                <button className="btn-primary">
+                                <button
+                                    className="btn-primary"
+                                    onClick={() => alert('سيتم إضافة نموذج الانضمام قريباً')}
+                                    aria-label="انضم إلى مشروع فطرة"
+                                >
                                     انضم إلى مشروع فطرة
                                 </button>
-                                <button className="btn-secondary">
+                                <button
+                                    className="btn-secondary"
+                                    onClick={() => document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' })}
+                                    aria-label="تعرف على المزيد عن برامج المشروع"
+                                >
                                     تعرف على المزيد
                                 </button>
                             </div>

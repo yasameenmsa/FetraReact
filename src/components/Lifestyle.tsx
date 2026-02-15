@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { ShoppingCart, PenTool, Scale } from 'lucide-react';
 
 const Lifestyle = () => {

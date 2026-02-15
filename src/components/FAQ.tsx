@@ -1,19 +1,29 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 
-const FAQItem = ({ question, answer, isOpen, toggle }) => {
+interface FAQItemProps {
+    question: string;
+    answer: string;
+    isOpen: boolean;
+    toggle: () => void;
+}
+
+const FAQItem = ({ question, answer, isOpen, toggle }: FAQItemProps) => {
     return (
         <div className="border border-cream-300 rounded-2xl bg-white overflow-hidden mb-4 transition-all duration-300 hover:shadow-md animate-on-scroll">
-            <button 
-                className="w-full px-6 py-5 text-right flex items-center justify-between gap-4 focus:outline-none"
+            <button
+                className="w-full px-6 py-5 text-right flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
                 onClick={toggle}
+                aria-expanded={isOpen}
+                aria-controls={`faq-answer-${Math.random().toString(36).substr(2, 9)}`}
             >
                 <span className="text-xl font-bold text-brown-800 group-hover:text-green-700 transition-colors">
                     {question}
                 </span>
-                <ChevronDown 
-                    className={`text-green-600 transition-transform duration-300 flex-shrink-0 ${isOpen ? 'rotate-180' : ''}`} 
+                <ChevronDown
+                    className={`text-green-600 transition-transform duration-300 flex-shrink-0 ${isOpen ? 'rotate-180' : ''}`}
                     size={24}
+                    aria-hidden="true"
                 />
             </button>
             <div 

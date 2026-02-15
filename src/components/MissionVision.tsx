@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Megaphone, Target, Eye } from 'lucide-react';
 
 const MissionVision = () => {
