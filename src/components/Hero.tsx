@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from 'react';
 import { ArrowDown } from 'lucide-react';
 
@@ -25,16 +27,16 @@ const Hero = () => {
                     <span className="inline-block py-1 px-3 rounded-full bg-green-700/30 border border-green-500/30 text-green-300 mb-6 font-medium">
                         مشروع فطرة
                     </span>
-                    
+
                     <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight">
                         <span className="block text-cream-100 mb-2">اكتشف...</span>
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-cream-100">الفطرة</span>
                     </h1>
-                    
+
                     <p className="text-xl md:text-2xl text-cream-200/80 mb-10 max-w-2xl mx-auto leading-relaxed">
                         نحو إعادة التوازن للحياة الإنسانية من خلال العودة إلى الأصول والقيم التي تتوافق مع الطبيعة البشرية.
                     </p>
-                    
+
                     <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
                         <button
                             className="btn-primary text-xl px-10 py-4 shadow-green-900/50"
@@ -64,8 +66,8 @@ const Hero = () => {
             {/* Floating Leaf Decoration */}
             <div className="absolute bottom-20 right-[10%] opacity-20 animate-float hidden md:block">
                 <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="text-green-300">
-                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.77 10-10 10Z"/>
-                    <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.77 10-10 10Z" />
+                    <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
                 </svg>
             </div>
         </section>

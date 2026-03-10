@@ -43,31 +43,6 @@ const Goals = () => {
             
             <div className="container-custom">
                 <div className="flex flex-col md:flex-row items-start gap-16">
-                    {/* Left Side - Image/Illustration - Hidden on mobile or replaced with chart */}
-                    <div className="hidden md:block w-1/2 sticky top-24 animate-on-scroll">
-                        <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100 relative overflow-hidden">
-                            <h3 className="text-3xl font-bold mb-8 text-brown-800">أهداف المشروع</h3>
-                            <div className="flex items-end justify-between gap-4 h-64 px-4 pb-4">
-                                {[30, 45, 60, 40, 75, 50, 80].map((h, i) => (
-                                    <div 
-                                        key={i} 
-                                        className="w-full bg-green-200 rounded-t-lg relative group transition-all duration-500 hover:bg-green-400"
-                                        style={{ height: `${h}%` }}
-                                    >
-                                        <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity font-bold text-green-700">
-                                            {h}%
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="h-4 w-full bg-gray-100 rounded-full mt-2"></div>
-                             {/* Decorative plant */}
-                             <div className="absolute -bottom-10 -right-10 w-40 h-40 opacity-20">
-                                <svg viewBox="0 0 24 24" fill="currentColor" className="text-green-800"><path d="M12 2L14 8L20 10L14 14L12 20L10 14L4 10L10 8L12 2Z" /></svg>
-                             </div>
-                        </div>
-                    </div>
-
                     {/* Right Side - Goals List */}
                     <div className="w-full md:w-1/2">
                         <div className="flex items-center gap-4 mb-12 animate-on-scroll">

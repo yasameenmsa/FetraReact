@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from 'react';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 
@@ -26,7 +28,7 @@ const FAQItem = ({ question, answer, isOpen, toggle }: FAQItemProps) => {
                     aria-hidden="true"
                 />
             </button>
-            <div 
+            <div
                 className={`transition-all duration-500 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
             >
                 <div className="px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
@@ -72,7 +74,7 @@ const FAQ = () => {
 
                 <div className="space-y-2">
                     {faqs.map((faq, index) => (
-                        <FAQItem 
+                        <FAQItem
                             key={index}
                             question={faq.question}
                             answer={faq.answer}

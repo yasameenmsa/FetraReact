@@ -1,5 +1,6 @@
 
 import { Megaphone, Target, Eye } from 'lucide-react';
+import Image from 'next/image';
 
 const MissionVision = () => {
     return (
@@ -14,24 +15,25 @@ const MissionVision = () => {
                                 <Megaphone className="text-red-500 transform -rotate-12" size={40} />
                                 <h2 className="text-4xl md:text-5xl font-bold text-brown-900">رسالة المشروع</h2>
                             </div>
-                            
+
                             <div className="relative pl-8 border-r-4 border-green-600 pr-6 py-2">
                                 <p className="text-xl md:text-2xl font-medium leading-loose text-brown-800">
-                                    "إحياء الفطرة في الإنسان والأسرة والمجتمع، وتحريرهم من التشكيل الصناعي الذي فرضته الحداثة والعولمة، وتوجيههم نحو سنن الله في الخلق والتكوين، بما يحقق الاكتمال النفسي والاجتماعي والروحي."
+                                    &quot;إحياء الفطرة في الإنسان والأسرة والمجتمع، وتحريرهم من التشكيل الصناعي الذي فرضته الحداثة والعولمة، وتوجيههم نحو سنن الله في الخلق والتكوين، بما يحقق الاكتمال النفسي والاجتماعي والروحي.&quot;
                                 </p>
                             </div>
-                            
+
                             <p className="mt-8 text-lg text-gray-600 leading-relaxed">
                                 تسعى رسالة مشروع فطرة إلى إعادة التوازن للحياة الإنسانية من خلال العودة إلى الأصول والقيم التي تتوافق مع الطبيعة البشرية كما خلقها الله.
                             </p>
                         </div>
                     </div>
-                    
+
                     <div className="w-full lg:w-1/2 animate-on-scroll delay-200">
                         <div className="relative rounded-3xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-all duration-500">
-                            <img 
-                                src="/preview (4).webp" 
-                                alt="Mission Illustration" 
+                            <Image
+                                src="/mission_illustration.png"
+                                alt="Mission Illustration"
+                                width={800} height={600}
                                 className="w-full h-auto object-cover"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>

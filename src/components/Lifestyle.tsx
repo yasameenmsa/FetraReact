@@ -1,5 +1,6 @@
 
 import { ShoppingCart, PenTool, Scale } from 'lucide-react';
+import Image from 'next/image';
 
 const Lifestyle = () => {
     return (
@@ -13,17 +14,17 @@ const Lifestyle = () => {
                 </p>
 
                 <div className="relative w-full max-w-3xl mx-auto aspect-square md:aspect-auto md:h-[600px] flex items-center justify-center animate-on-scroll delay-200">
-                    
+
                     {/* Central Circle */}
                     <div className="absolute w-40 h-40 bg-white rounded-full z-20 flex items-center justify-center shadow-inner">
                         <div className="w-32 h-32 bg-green-50 rounded-full flex items-center justify-center">
-                             <img src="/logo.webp" alt="Logo" className="w-16 opacity-50" />
+                            <Image src="/logo.webp" alt="Logo" width={64} height={64} className="opacity-50" />
                         </div>
                     </div>
 
                     {/* Circular Segments - Visual Representation using CSS Grid/Flex for simplicity over SVG for now, or simplified layout */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
-                        
+
                         {/* Segment 1 */}
                         <div className="flex flex-col items-center gap-6 group">
                             <div className="w-48 h-48 rounded-full bg-green-100 border-4 border-white shadow-lg flex items-center justify-center transition-transform duration-500 group-hover:scale-105 group-hover:bg-green-200">
@@ -35,9 +36,9 @@ const Lifestyle = () => {
                             </div>
                         </div>
 
-                         {/* Segment 2 */}
-                         <div className="flex flex-col items-center gap-6 group md:mt-32">
-                             <div className="w-48 h-48 rounded-full bg-blue-100 border-4 border-white shadow-lg flex items-center justify-center transition-transform duration-500 group-hover:scale-105 group-hover:bg-blue-200">
+                        {/* Segment 2 */}
+                        <div className="flex flex-col items-center gap-6 group md:mt-32">
+                            <div className="w-48 h-48 rounded-full bg-blue-100 border-4 border-white shadow-lg flex items-center justify-center transition-transform duration-500 group-hover:scale-105 group-hover:bg-blue-200">
                                 <ShoppingCart className="text-blue-700 w-16 h-16" />
                             </div>
                             <div>
@@ -46,8 +47,8 @@ const Lifestyle = () => {
                             </div>
                         </div>
 
-                         {/* Segment 3 */}
-                         <div className="flex flex-col items-center gap-6 group">
+                        {/* Segment 3 */}
+                        <div className="flex flex-col items-center gap-6 group">
                             <div className="w-48 h-48 rounded-full bg-orange-100 border-4 border-white shadow-lg flex items-center justify-center transition-transform duration-500 group-hover:scale-105 group-hover:bg-orange-200">
                                 <PenTool className="text-orange-700 w-16 h-16" />
                             </div>

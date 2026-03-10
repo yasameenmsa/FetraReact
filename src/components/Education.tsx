@@ -1,20 +1,23 @@
 
 import { Home, Brain, Sparkles } from 'lucide-react';
+import Image from 'next/image';
 
 const Education = () => {
     return (
         <section className="section-padding bg-white relative overflow-hidden">
             <div className="container-custom flex flex-col lg:flex-row-reverse items-center gap-16">
-                
+
                 {/* Image Side */}
                 <div className="w-full lg:w-1/2 animate-on-scroll">
                     <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
-                         <img 
-                            src="/preview.webp" 
-                            alt="Education according to Fitrah" 
+                        <Image
+                            src="/education_illustration.png"
+                            alt="Education according to Fitrah"
+                            width={800}
+                            height={600}
                             className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700"
                         />
-                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                     </div>
                 </div>
 
@@ -39,8 +42,8 @@ const Education = () => {
                             </div>
                         </div>
 
-                         {/* Item 2 */}
-                         <div className="flex items-start gap-6 animate-on-scroll delay-300 group">
+                        {/* Item 2 */}
+                        <div className="flex items-start gap-6 animate-on-scroll delay-300 group">
                             <div className="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-green-100 transition-colors">
                                 <Brain className="text-green-700" size={32} />
                             </div>
@@ -50,9 +53,9 @@ const Education = () => {
                             </div>
                         </div>
 
-                         {/* Item 3 */}
-                         <div className="flex items-start gap-6 animate-on-scroll delay-400 group">
-                             <div className="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-green-100 transition-colors">
+                        {/* Item 3 */}
+                        <div className="flex items-start gap-6 animate-on-scroll delay-400 group">
+                            <div className="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-green-100 transition-colors">
                                 <Sparkles className="text-green-700" size={32} />
                             </div>
                             <div>

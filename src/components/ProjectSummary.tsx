@@ -1,4 +1,7 @@
+"use client";
+
 import { useEffect } from 'react';
+import Link from 'next/link';
 import { Lightbulb } from 'lucide-react';
 
 const ProjectSummary = () => {
@@ -30,7 +33,7 @@ const ProjectSummary = () => {
                             <Lightbulb size={32} className="text-brown-600" />
                         </div>
                     </div>
-                    
+
                     <h2 className="text-4xl md:text-5xl font-bold mb-12 text-brown-900 animate-on-scroll delay-100">
                         المشروع في <span className="text-green-700 relative">
                             جملة
@@ -39,25 +42,25 @@ const ProjectSummary = () => {
                             </svg>
                         </span>
                     </h2>
-                    
+
                     <div className="relative animate-on-scroll delay-200">
                         <div className="absolute -top-10 -right-10 w-24 h-24 text-brown-200 opacity-20">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21L14.017 18C14.017 16.8954 13.1216 16 12.017 16H9.01699C7.91243 16 7.01699 16.8954 7.01699 18L7.01699 21H2.01699V4H10.017V2H14.017V4H22.017V21H17.017V17H19.017V6H5.01699V19H9.01699V21H14.017Z" /></svg>
                         </div>
-                        
+
                         <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-cream-300 relative z-10">
                             <p className="text-xl md:text-3xl font-medium leading-relaxed text-brown-800">
-                                "فطرة" هو مشروع لتحرير الإنسان من التشكيل القسري، وردّه إلى نفسه كما خُلق: عبدًا لله، زوجًا أو زوجة، أمًّا أو أبًا، منسجمًا مع طبيعته، مرتبطًا بسنن الكون، قائمًا برسالته في الأرض.
+                                &quot;فطرة&quot; هو مشروع لتحرير الإنسان من التشكيل القسري، وردّه إلى نفسه كما خُلق: عبدًا لله، زوجًا أو زوجة، أمًّا أو أبًا، منسجمًا مع طبيعته، مرتبطًا بسنن الكون، قائمًا برسالته في الأرض.
                             </p>
-                            
+
                             <div className="mt-10 flex flex-wrap justify-center gap-4">
-                                <button
+                                <Link
+                                    href="/form"
                                     className="btn-primary"
-                                    onClick={() => alert('سيتم إضافة نموذج الانضمام قريباً')}
                                     aria-label="انضم إلى مشروع فطرة"
                                 >
                                     انضم إلى مشروع فطرة
-                                </button>
+                                </Link>
                                 <button
                                     className="btn-secondary"
                                     onClick={() => document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' })}
@@ -67,7 +70,7 @@ const ProjectSummary = () => {
                                 </button>
                             </div>
                         </div>
-                        
+
                         <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-green-100 rounded-full -z-0 blur-xl opacity-60"></div>
                         <div className="absolute -top-6 -right-6 w-32 h-32 bg-brown-100 rounded-full -z-0 blur-xl opacity-60"></div>
                     </div>
