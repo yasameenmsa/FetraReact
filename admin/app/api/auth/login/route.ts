@@ -41,10 +41,14 @@ export async function POST(req: Request) {
   try {
     const { password } = await req.json()
 
-    const adminPassword = process.env.ADMIN_PASSWORD
-    if (!adminPassword) {
+    const rawPassword = process.env.ADMIN_PASSWORD
+    if (!rawPassword) {
       return NextResponse.json({ error: 'Server configuration error' }, { status: 500 })
     }
+
+    // Render (and some hosts) pass env values literally, so a "\\$" escape intended
+    // for .env files may arrive as a real backslash. Normalize both forms.
+    const adminPassword = rawPassword.replace(/\\\$/g, '$')
 
     const isValid = await verifyPassword(password, adminPassword)
     if (!isValid) {
