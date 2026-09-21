@@ -6,6 +6,21 @@ const attempts = new Map<string, { count: number; resetAt: number }>()
 const MAX_ATTEMPTS = 5
 const WINDOW_MS = 15 * 60 * 1000
 
+function resolveAdminHash(raw: string): string {
+  // If the value is valid base64, decode it first (base64 contains no "$").
+  const trimmed = raw.trim()
+  if (/^[A-Za-z0-9+/]+={0,2}$/.test(trimmed)) {
+    try {
+      const decoded = Buffer.from(trimmed, 'base64').toString('utf8')
+      if (decoded.startsWith('$2')) return decoded
+    } catch {
+      // not base64 — fall through
+    }
+  }
+  // Otherwise accept plain or backslash-escaped "$" forms.
+  return trimmed.replace(/\\\$/g, '$')
+}
+
 function getClientIp(req: Request): string {
   const fwd = req.headers.get('x-forwarded-for')
   if (fwd) return fwd.split(',')[0].trim()
@@ -46,9 +61,12 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Server configuration error' }, { status: 500 })
     }
 
-    // Render (and some hosts) pass env values literally, so a "\\$" escape intended
-    // for .env files may arrive as a real backslash. Normalize both forms.
-    const adminPassword = rawPassword.replace(/\\\$/g, '$')
+    // Accept the bcrypt hash in any of these forms so the value survives every
+    // env handling quirk (local .env "$" expansion, Render/other hosts literal):
+    //   1. plain redis hash:     $2a$12$...
+    //   2. escaped for .env:     \$2a\$12\$...
+    //   3. base64 of the hash:   XC9XWkNn...  (no "$" at all — safest)
+    const adminPassword = resolveAdminHash(rawPassword)
 
     const isValid = await verifyPassword(password, adminPassword)
     if (!isValid) {
