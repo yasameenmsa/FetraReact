@@ -24,11 +24,55 @@ export default function DashboardPage() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [search, setSearch] = useState('')
+  const [backup, setBackup] = useState<{ createdAt: string; count: number } | null>(null)
+  const [backupJustCreated, setBackupJustCreated] = useState(false)
+  const [backingUp, setBackingUp] = useState(false)
   const router = useRouter()
 
   useEffect(() => {
     fetchRegistrations()
+    checkBackup()
   }, [])
+
+  const checkBackup = async () => {
+    try {
+      const res = await fetch('/api/backup')
+      if (res.status === 401) {
+        router.push('/')
+        return
+      }
+      const data = await res.json()
+      if (data.success) {
+        setBackup(data.lastBackup)
+        setBackupJustCreated(Boolean(data.created))
+      }
+    } catch {
+      // silent — backup is best-effort, dashboard still works
+    }
+  }
+
+  const handleBackupNow = async () => {
+    try {
+      setBackingUp(true)
+      const res = await fetch('/api/backup', { method: 'POST' })
+      if (res.status === 401) {
+        router.push('/')
+        return
+      }
+      const data = await res.json()
+      if (data.success) {
+        setBackup(data.lastBackup)
+        setBackupJustCreated(true)
+        alert('تم حفظ نسخة احتياطية بنجاح')
+      } else {
+        alert('فشل في حفظ النسخة الاحتياطية')
+      }
+    } catch {
+      alert('حدث خطأ في الاتصال')
+    } finally {
+      setBackingUp(false)
+    }
+  }
 
   const fetchRegistrations = async () => {
     try {
@@ -53,6 +97,32 @@ export default function DashboardPage() {
   const handleLogout = async () => {
     await fetch('/api/auth/logout', { method: 'POST' })
     router.push('/')
+  }
+
+  const handleExport = async () => {
+    try {
+      const res = await fetch('/api/export')
+      if (res.status === 401) {
+        router.push('/')
+        return
+      }
+      if (!res.ok) {
+        alert('فشل في تنزيل الملف')
+        return
+      }
+      const blob = await res.blob()
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      const date = new Date().toISOString().slice(0, 10)
+      a.download = `fitrah-registrations-${date}.csv`
+      document.body.appendChild(a)
+      a.click()
+      a.remove()
+      URL.revokeObjectURL(url)
+    } catch {
+      alert('حدث خطأ في الاتصال')
+    }
   }
 
   const filtered = registrations.filter(
@@ -93,12 +163,20 @@ export default function DashboardPage() {
           <h1 className="text-3xl font-bold text-gray-800">لوحة التحكم</h1>
           <p className="text-gray-500 mt-1">إدارة تسجيلات سفراء مشروع فطرة</p>
         </div>
-        <button
-          onClick={handleLogout}
-          className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
-        >
-          تسجيل الخروج
-        </button>
+        <div className="flex gap-2">
+          <button
+            onClick={handleExport}
+            className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+          >
+            تنزيل Excel
+          </button>
+          <button
+            onClick={handleLogout}
+            className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+          >
+            تسجيل الخروج
+          </button>
+        </div>
       </div>
 
       {/* Stats */}
@@ -115,6 +193,28 @@ export default function DashboardPage() {
           <p className="text-gray-500 text-sm">الإناث</p>
           <p className="text-3xl font-bold text-pink-600">{stats.female}</p>
         </div>
+      </div>
+
+      {/* Auto backup card */}
+      <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+        <div>
+          <p className="font-semibold text-emerald-800">نسخة احتياطية تلقائية شهرية</p>
+          {backup ? (
+            <p className="text-sm text-emerald-700 mt-1">
+              آخر نسخة: {new Date(backup.createdAt).toLocaleString('ar-SA')} — {backup.count} تسجيل
+              {backupJustCreated && <span className="font-semibold"> (تم إنشاؤها الآن)</span>}
+            </p>
+          ) : (
+            <p className="text-sm text-emerald-700 mt-1">لم تُنشأ نسخة بعد</p>
+          )}
+        </div>
+        <button
+          onClick={handleBackupNow}
+          disabled={backingUp}
+          className="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors disabled:opacity-50"
+        >
+          {backingUp ? 'جارٍ الحفظ...' : 'نسخ احتياطي الآن'}
+        </button>
       </div>
 
       {/* Search */}
@@ -180,6 +280,11 @@ export default function DashboardPage() {
           </div>
         )}
       </div>
+
+      {/* Export note */}
+      <p className="text-xs text-gray-400 mt-4">
+        للتنزيل كملف Excel: يُخرج الموقع البيانات بصيغة CSV (تُفتح مباشرة في Excel).
+      </p>
     </div>
   )
 }
