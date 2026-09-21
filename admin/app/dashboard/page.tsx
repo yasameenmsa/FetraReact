@@ -50,8 +50,8 @@ export default function DashboardPage() {
     }
   }
 
-  const handleLogout = () => {
-    document.cookie = 'admin-token=; path=/; max-age=0'
+  const handleLogout = async () => {
+    await fetch('/api/auth/logout', { method: 'POST' })
     router.push('/')
   }
 
